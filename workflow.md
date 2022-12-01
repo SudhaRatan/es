@@ -6,6 +6,14 @@
   
   - [ ] Seller // Not focused now
 
+- [ ] Models **(IMP)**
+  
+  - [ ] Product model
+  
+  - [ ] User model
+  
+  - [ ]  
+
 - [ ] WIth Login
   
   - [ ] Cart
