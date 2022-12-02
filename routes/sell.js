@@ -8,7 +8,6 @@ router
         res.json({ auth: true, message: "Upload a Product" })
     })
     .post(verifyJWT, async (req, res) => {
-        console.log(req.body.post)
         res.send("posted")
     })
 
