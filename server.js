@@ -28,11 +28,13 @@ db.once('open', () => console.log("Connected to mongoose"))
 const index = require('./routes/index')
 const login = require('./routes/login')
 const cart = require('./routes/cart')
+const sell = require('./routes/sell')
 
 //use routes
 app.use("/", index)
 app.use("/login", login)
 app.use("/cart", cart)
+app.use("/sell",sell)
 
 app.listen(process.env.PORT, function () {
     console.log("Server running on port " + this.address().port)
