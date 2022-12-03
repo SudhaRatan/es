@@ -1,13 +1,9 @@
 const mongoose = require('mongoose')
 
 const imageSchema = mongoose.Schema({
-    imageType: {
-        type: String,
-        required: false,
-    },
     imageData: {
-        type: String,
-        required: false,
+        type: Array,
+        required: true,
     },
     prodId: {
         type: mongoose.Schema.Types.ObjectId,
