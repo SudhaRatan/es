@@ -25,7 +25,6 @@ db.once('open', () => console.log("Connected to mongoose"))
 
 
 // Include Routes
-const index = require('./routes/index')
 const login = require('./routes/login')
 const cart = require('./routes/cart')
 const sell = require('./routes/sell')
