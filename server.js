@@ -25,12 +25,13 @@ db.once('open', () => console.log("Connected to mongoose"))
 
 
 // Include Routes
+const index = require('./routes/index')
 const login = require('./routes/login')
 const cart = require('./routes/cart')
 const sell = require('./routes/sell')
 
 //use routes
-// app.use("/", index)
+app.use("/", index)
 app.use("/api/login", login)
 app.use("/api/cart", cart)
 app.use("/api/sell",sell)
