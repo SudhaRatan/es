@@ -72,13 +72,13 @@ router
         try {
             const prod = await Product.findById(id)
             // console.log(prod)
-            const imgArray = await Image.findOne({prodId:id})
+            const imgArray = await Image.findOne({ prodId: id })
             // console.log(imgArray)
-            res.json({ auth: true, message: "Product page",prod,imgArray })
+            res.json({ auth: true, message: "Product page", prod, imgArray })
         } catch (error) {
             console.log(error)
         }
-        
+
     })
 
 module.exports = router
