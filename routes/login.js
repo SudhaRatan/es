@@ -8,13 +8,13 @@ require('dotenv').config()
 router
     .route("/")
     .get((req, res) => {
-        res.send("Login Page")
+        res.json({login:"login page"})
     })
     .post(async (req, res) => {
         try {
             const phone = req.body.number
             const password = req.body.password
-
+            // console.log("req received")
             const user = await User.findOne({ phone: phone })
             if (user) {
                 if (await bcrypt.compare(req.body.password, user.password)) {

@@ -4,15 +4,17 @@
   
   - [ ] Customer || Unique number
   
-  - [ ] Seller // Not focused now
+  - [ ] Seller
+  
+  - [x] OR SAME account for both
 
 - [ ] Models **(IMP)**
   
-  - [ ] Product model
+  - [x] Product model
   
-  - [ ] User model
+  - [x] User model // still some left
   
-  - [ ]  
+  - [x] Image model
 
 - [ ] WIth Login
   
@@ -27,6 +29,14 @@
   - [ ] account details
   
   - [ ] account edit
+  
+  - [x] Add products
+  
+  - [x] View products
+  
+  - [ ] Edit products
+  
+  - [ ] Delete products
 
 - [ ] Without login
   
@@ -34,7 +44,7 @@
     - [ ] Sorted according to their categories
       - [ ] Electronics
       - [ ] Home needs
-      - [ ] Toys ........
+      - [ ] Toys .......
   - [ ] Search
     - [ ] Name
     - [ ] Category
@@ -55,5 +65,9 @@
 - [ ] ## Search / Display products with filters
 
 - [ ] ## Product
+  
+  - [ ] Review
+  
+  - [ ] 
 
 - [ ] ## Cart

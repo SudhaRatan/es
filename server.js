@@ -32,6 +32,7 @@ const sell = require('./routes/sell')
 
 //use routes
 app.use("/", index)
+app.use("/api",index)
 app.use("/api/login", login)
 app.use("/api/cart", cart)
 app.use("/api/sell",sell)

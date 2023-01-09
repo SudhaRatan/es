@@ -15,13 +15,11 @@ router
             name: req.body.post.name,
             brand: req.body.post.brand,
             price: req.body.post.price,
+            category:req.body.post.category,
             currency: req.body.post.currency,
             description: req.body.post.description,
             userId: req.userId,
         })
-
-
-
         try {
             console.log("uploading prod")
             const prod = await newProduct.save()
@@ -39,11 +37,12 @@ router
         }
         // res.send("Posted")
     })
-
+router.route("/qwe").get((req, res) => { res.send("wr") })
 router
     .route("/products")
     .get(verifyJWT, async (req, res) => {
         // const userId = req.userId
+        // console.log("called")
         try {
             var images = {}
             const prods = await Product.find({ userId: req.userId })
