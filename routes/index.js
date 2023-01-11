@@ -31,8 +31,21 @@ router
 		const prods = await Product.aggregate([
 			{ $sample: { size: 5 } }
 		])
+		var images = {}
+		const prom = prods.map(async element => {
+			const img = await Image.findOne({ prodId: element._id })
+			const imgdata = await img.imageData[0]
+			const id = element._id
+			images[id] = imgdata
+		})
+
+		await Promise.all(prom)
+		const data = {
+			prods: prods,
+			images: images,
+		}
 		// console.log(prods)
-		// console.log("----------------------")
-		res.send("success")
+		console.log("----------------------")
+		res.json(data)
 	})
 module.exports = router
