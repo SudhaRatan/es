@@ -22,7 +22,17 @@ router
 		])
 		const id = featProduct[0]._id
 		const imgdata = await Image.findOne({ prodId: id })
-		res.json({featProd : featProduct, imgData: imgdata})
+		res.json({ featProd: featProduct, imgData: imgdata })
 	})
 
+router
+	.route("/electronicProds")
+	.get(async (req, res) => {
+		const prods = await Product.aggregate([
+			{ $sample: { size: 5 } }
+		])
+		// console.log(prods)
+		// console.log("----------------------")
+		res.send("success")
+	})
 module.exports = router

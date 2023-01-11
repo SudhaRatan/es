@@ -66,7 +66,7 @@ router
 
 router
     .route("/product/:id")
-    .get(verifyJWT, async (req, res) => {
+    .get( async (req, res) => {
         const id = req.params.id
         try {
             const prod = await Product.findById(id)
