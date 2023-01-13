@@ -55,7 +55,6 @@ router
 
             await Promise.all(prom)
             // console.log(images)
-
             res.json({ auth: true, message: "Your Products", prods, images })
         } catch (error) {
             console.log(error)

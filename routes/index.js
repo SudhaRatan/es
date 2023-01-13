@@ -45,7 +45,7 @@ router
 			images: images,
 		}
 		// console.log(prods)
-		console.log("----------------------")
+		// console.log("----------------------")
 		res.json(data)
 	})
 module.exports = router
