@@ -65,4 +65,20 @@ router
 		}
 	})
 
+router
+	.route("/removePRoduct/:id")
+	.delete(verifyJWT,async(req,res) => {
+		// console.log(req.params)
+		try {
+			const result = await cart.updateOne({userId : req.userId},{
+				$pull : {'productIds' : req.params.id}
+			})
+			res.json({auth: true, message: "deleted"})
+		} catch (error) {
+			console.log(error)
+			res.json({auth:false, message : "Error..please try again"})
+		}
+		
+	})
+
 module.exports = router
