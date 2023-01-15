@@ -61,6 +61,7 @@
 - [ ] ## Orders
 
 - [ ] ## Account details/edit
+	- [ ] Add address 
 
 - [ ] ## Search / Display products with filters
 
