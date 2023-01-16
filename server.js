@@ -29,6 +29,7 @@ const index = require('./routes/index')
 const login = require('./routes/login')
 const cart = require('./routes/cart')
 const sell = require('./routes/sell')
+const account = require('./routes/account')
 
 //use routes
 app.use("/", index)
@@ -36,6 +37,7 @@ app.use("/api",index)
 app.use("/api/login", login)
 app.use("/api/cart", cart)
 app.use("/api/sell",sell)
+app.use("/api/account",account)
 
 app.listen(process.env.PORT, function () {
     console.log("Server running on port " + this.address().port)
