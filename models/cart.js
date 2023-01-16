@@ -8,7 +8,8 @@ const cartSchema = mongoose.Schema({
   productIds : [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
-  }]
+  }],
+
 })
 
 module.exports = mongoose.model('cart', cartSchema)
