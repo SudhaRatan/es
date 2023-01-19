@@ -31,6 +31,36 @@ const address = mongoose.Schema({
     },
 })
 
+const order = mongoose.Schema({
+    productIds: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+        required: true,
+    }],
+    address: {
+        type: address,
+        required: true,
+    },
+    method:{
+        type: String,
+        required: true,
+    },
+    orderDate: {
+        type: Date,
+        default: Date.now,
+        required: true,
+    },
+    status: {
+        type: String,
+        default: 'Ordered',
+        required: true,
+    },
+    deliveryDate: {
+        type: Date,
+        required: false,
+    }
+})
+
 const userSchema = mongoose.Schema({
     name: {
         type: String,
@@ -46,8 +76,13 @@ const userSchema = mongoose.Schema({
     },
     addresses: [{
         type: address,
-        required: true,
-    }]
+        required: false,
+    }],
+    orders: [{
+        type: order,
+        required: false,
+    }],
+
 })
 
 module.exports = mongoose.model('user', userSchema)

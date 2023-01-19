@@ -17,7 +17,7 @@ router
 
 router
   .route("/address")
-  .get(verifyJWT, async(req,res) => {
+  .get(verifyJWT, async (req, res) => {
     // const result = await 
   })
   .post(verifyJWT, async (req, res) => {
@@ -39,7 +39,40 @@ router
   })
 
 router
+  .route("/verify")
+  .get(verifyJWT, (req, res) => {
+    res.json({ auth: true })
+  })
+
+router
   .route("/buy")
-  .get()
+  .post(verifyJWT, async (req, res) => {
+    // console.log(req.body)
+    try {
+      const addresses = await user.findOne({ _id: req.userId }, { addresses: 1 })
+      const address = addresses.addresses[req.body.info.index]
+      // console.log(address, req.body.info.prods)
+      var productIds = []
+      req.body.info.prods.map(prod => {
+        productIds.push(prod._id)
+      })
+      // console.log(productIds)
+      const result = await user.updateOne({ _id: req.userId }, {
+        $push: {
+          orders: {
+            productIds: productIds,
+            method: req.body.method,
+            address: address,
+          }
+        }
+      })
+      res.json({ auth: true, message: "Order Placed" })
+      // console.log(result)
+    } catch (error) {
+      // console.log(error)
+      res.json({ auth: false, message: "Something went wrong try again later" })
+    }
+
+  })
 
 module.exports = router
