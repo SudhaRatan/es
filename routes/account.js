@@ -2,6 +2,7 @@ const express = require("express")
 const verifyJWT = require("../auth/auth")
 const router = express.Router()
 const user = require('../models/user')
+const cart = require('../models/cart')
 
 router
   .route("/")
@@ -66,6 +67,11 @@ router
           }
         }
       })
+      if(req.body.info.cart){
+        const resss = await cart.updateOne({userId: req.userId},{
+          $set:{productIds:[]}
+        })
+      }
       res.json({ auth: true, message: "Order Placed" })
       // console.log(result)
     } catch (error) {
