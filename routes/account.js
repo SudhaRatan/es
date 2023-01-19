@@ -38,4 +38,8 @@ router
     }
   })
 
+router
+  .route("/buy")
+  .get()
+
 module.exports = router
