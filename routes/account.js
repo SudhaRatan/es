@@ -67,9 +67,9 @@ router
           }
         }
       })
-      if(req.body.info.cart){
-        const resss = await cart.updateOne({userId: req.userId},{
-          $set:{productIds:[]}
+      if (req.body.info.cart) {
+        const resss = await cart.updateOne({ userId: req.userId }, {
+          $set: { productIds: [] }
         })
       }
       res.json({ auth: true, message: "Order Placed" })
@@ -78,7 +78,21 @@ router
       // console.log(error)
       res.json({ auth: false, message: "Something went wrong try again later" })
     }
+  })
 
+router
+  .route("/orders")
+  .get(verifyJWT, async (req, res) => {
+    try {
+      const orders = await user.findOne({ _id: req.userId }, { orders: 1 }).populate({
+        path: 'orders',
+        populate: 'productIds'
+      })
+      // console.log(orders)
+      res.json({ auth: true, orders})
+    } catch (error) {
+      console.log(error)
+    }
   })
 
 module.exports = router
