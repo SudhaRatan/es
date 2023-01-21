@@ -3,6 +3,7 @@ const verifyJWT = require("../auth/auth")
 const router = express.Router()
 const user = require('../models/user')
 const cart = require('../models/cart')
+const image = require('../models/image')
 
 router
   .route("/")
@@ -84,12 +85,39 @@ router
   .route("/orders")
   .get(verifyJWT, async (req, res) => {
     try {
-      const orders = await user.findOne({ _id: req.userId }, { orders: 1 }).populate({
+      const orders = await user.findOne({ _id: req.userId }).populate({
         path: 'orders',
         populate: 'productIds'
       })
       // console.log(orders)
-      res.json({ auth: true, orders})
+      res.json({ auth: true, orders })
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
+// router
+//   .route("/orders/images/:id")
+//   .get(verifyJWT, async (req, res) => {
+//     try {
+//       console.log(req.params.id)
+//       const orderItems = await user.findOne({ orders:{
+//         $elemMatch : {
+//           _id: req.params.id
+//         }
+//       }},{'orders.productIds': 1})
+//       console.log(orderItems)
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   })
+
+router
+  .route("/orders/image/:id")
+  .get(verifyJWT, async(req,res) => {
+    try {
+      const Image = await image.findOne({prodId: req.params.id})
+      res.json(Image.imageData[0])
     } catch (error) {
       console.log(error)
     }
