@@ -17,10 +17,10 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    currency: {
-        type: String,
-        required: true,
-    },
+    // currency: {
+    //     type: String,
+    //     required: true,
+    // },
     description: {
         type: String,
         required: false,

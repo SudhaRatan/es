@@ -16,21 +16,21 @@ router
             brand: req.body.post.brand,
             price: req.body.post.price,
             category:req.body.post.category,
-            currency: req.body.post.currency,
+            // currency: req.body.post.currency,
             description: req.body.post.description,
             userId: req.userId,
         })
         try {
-            console.log("uploading prod")
+            // console.log("uploading prod")
             const prod = await newProduct.save()
-            console.log("uploaded prod")
+            // console.log("uploaded prod")
             const imgArray = new Image({
                 imageData: req.body.results,
                 prodId: prod._id
             })
-            console.log("uploading img")
+            // console.log("uploading img")
             const img = await imgArray.save()
-            console.log("uploaded image")
+            // console.log("uploaded image")
             res.send("posted")
         } catch (error) {
             console.log(error)
