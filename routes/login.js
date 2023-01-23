@@ -21,7 +21,7 @@ router
                     // res.send("Authenticated")
                     // const id = user._id
                     const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN, {
-                        expiresIn: 60 * 60,
+                        // expiresIn: 60 * 60,
                     })
                     req.user = user._id
                     res.json({ auth: true, token: token, user: user._id })
