@@ -44,18 +44,8 @@ router
         // const userId = req.userId
         // console.log("called")
         try {
-            var images = {}
             const prods = await Product.find({ userId: req.userId })
-            const prom = prods.map(async element => {
-                const img = await Image.findOne({ prodId: element._id })
-                const imgdata = await img.imageData[0]
-                const id = element._id
-                images[id] = imgdata
-            })
-
-            await Promise.all(prom)
-            // console.log(images)
-            res.json({ auth: true, message: "Your Products", prods, images })
+            res.json({ auth: true, message: "Your Products", prods })
         } catch (error) {
             console.log(error)
         }

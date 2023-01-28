@@ -114,7 +114,7 @@ router
 
 router
   .route("/orders/image/:id")
-  .get(verifyJWT, async(req,res) => {
+  .get(async(req,res) => {
     try {
       const Image = await image.findOne({prodId: req.params.id})
       res.json(Image.imageData[0])
