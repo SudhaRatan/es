@@ -15,7 +15,7 @@ router
             name: req.body.post.name,
             brand: req.body.post.brand,
             price: req.body.post.price,
-            category:req.body.post.category,
+            category: req.body.post.category,
             // currency: req.body.post.currency,
             description: req.body.post.description,
             userId: req.userId,
@@ -49,13 +49,24 @@ router
         } catch (error) {
             console.log(error)
         }
+    })
 
+router
+    .route("/product/delete/:id")
+    .delete(async (req, res) => {
+        try {
+            const result = await Product.findByIdAndDelete(req.params.id)
+            // console.log(result)
+            res.json({ auth: true })
+        } catch (error) {
+            res.json({ auth: false, error: error })
+        }
 
     })
 
 router
     .route("/product/:id")
-    .get( async (req, res) => {
+    .get(async (req, res) => {
         const id = req.params.id
         try {
             const prod = await Product.findById(id)
@@ -66,7 +77,6 @@ router
         } catch (error) {
             console.log(error)
         }
-
     })
 
 module.exports = router
