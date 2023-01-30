@@ -31,9 +31,10 @@ router
             // console.log("uploading img")
             const img = await imgArray.save()
             // console.log("uploaded image")
-            res.send("posted")
+            res.json({auth: true, message:"Posted"})
         } catch (error) {
-            console.log(error)
+            // console.log(error)
+            res.json({auth:false, error: error})
         }
         // res.send("Posted")
     })
