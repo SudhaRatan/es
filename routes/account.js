@@ -110,7 +110,7 @@ router
 //     } catch (error) {
 //       console.log(error)
 //     }
-//   })
+//   }) 
 
 router
   .route("/orders/image/:id")
