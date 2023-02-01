@@ -35,4 +35,17 @@ router
 		res.json({ prods: prods })
 	})
 
+router
+	.route('/search/:product')
+	.get(async (req, res) => {
+
+		const result = await Product.find({ $or: [
+			{ name: { $regex: req.params.product, $options: 'i' } },
+			// { category: { $regex: req.params.product, $options: 'i' } },
+			// { subcategory: { $regex: req.params.product, $options: 'i' } },
+			// { brand: { $regex: req.params.product, $options: 'i' } },
+		] }, { name: 1 })
+		res.json(result)
+	})
+
 module.exports = router

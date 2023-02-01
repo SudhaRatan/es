@@ -16,6 +16,7 @@ router
             brand: req.body.post.brand,
             price: req.body.post.price,
             category: req.body.post.category,
+            subcategory: req.body.post.subcategory,
             // currency: req.body.post.currency,
             description: req.body.post.description,
             userId: req.userId,
