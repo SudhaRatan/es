@@ -40,11 +40,11 @@ router
 	.get(async (req, res) => {
 
 		const result = await Product.find({ $or: [
-			{ name: { $regex: req.params.product, $options: 'i' } },
-			// { category: { $regex: req.params.product, $options: 'i' } },
-			// { subcategory: { $regex: req.params.product, $options: 'i' } },
-			// { brand: { $regex: req.params.product, $options: 'i' } },
-		] }, { name: 1 })
+			{ name: { $regex: req.params.product, $options: 'si' } },
+			{ category: { $regex: req.params.product, $options: 'si' } },
+			{ subcategory: { $regex: req.params.product, $options: 'si' } },
+			{ brand: { $regex: req.params.product, $options: 'si' } },
+		] })
 		res.json(result)
 	})
 
