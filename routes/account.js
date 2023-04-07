@@ -95,6 +95,18 @@ router
       console.log(error)
     }
   })
+  .delete(verifyJWT, async (req, res) => {
+    try {
+      const result = await user.updateOne({ _id: req.userId }, {
+        $set: {
+          orders: []
+        }
+      })
+      res.json({ auth: true })
+    } catch (error) {
+      console.log(error)
+    }
+  })
 
 // router
 //   .route("/orders/images/:id")
