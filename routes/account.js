@@ -95,6 +95,9 @@ router
       console.log(error)
     }
   })
+  .put(verifyJWT, async(req,res) => {
+    
+  })
   .delete(verifyJWT, async (req, res) => {
     try {
       const result = await user.updateOne({ _id: req.userId }, {
